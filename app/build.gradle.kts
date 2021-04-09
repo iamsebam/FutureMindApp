@@ -19,20 +19,17 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 }
 
 dependencies {
 
-    implementation(Libs.Android.coreKtx)
-    implementation(Libs.Android.appCompat)
+    implementation(project(Module.Feature.list))
+
     implementation(Libs.Android.material)
-    implementation(Libs.Android.constraintLayout)
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)
-    testImplementation(Libs.Test.junit)
 }
 
 apply(plugin = Plugin.Tools.ktLint)

@@ -1,7 +1,14 @@
 object Plugin {
+
+    object App {
+
+        const val feature = "feature"
+    }
+
     object Android {
 
         const val application = "com.android.application"
+        const val library = "com.android.library"
     }
 
     object Kotlin {

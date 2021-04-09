@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.futuremindapp
+package com.sebastianmatyjaszczyk.listfeature
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
