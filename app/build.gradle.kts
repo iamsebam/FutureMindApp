@@ -21,13 +21,17 @@ android {
             isMinifyEnabled = false
         }
     }
+
+    hilt {
+        enableExperimentalClasspathAggregation = true
+    }
 }
 
 dependencies {
 
     implementation(project(Module.Feature.list))
+    implementation(project(Module.Lib.resources))
 
-    implementation(Libs.Android.material)
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)
 }

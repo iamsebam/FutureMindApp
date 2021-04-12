@@ -7,3 +7,4 @@ pluginManagement {
 rootProject.name = "FutureMindApp"
 include(":app")
 include(":listFeature")
+include(":resourcesLib")

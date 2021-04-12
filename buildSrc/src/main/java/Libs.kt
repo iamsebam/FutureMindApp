@@ -21,6 +21,9 @@ object Libs {
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.Android.constraintLayout}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Android.lifecycle}"
         const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Android.lifecycle}"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.Android.fragmentKtx}"
+        const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.Android.swipeRefreshLayout}"
+        const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.Android.navigation}"
     }
 
     object Database {

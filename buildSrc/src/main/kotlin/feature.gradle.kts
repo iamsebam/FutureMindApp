@@ -18,9 +18,23 @@ android {
             isMinifyEnabled = false
         }
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    hilt {
+        enableExperimentalClasspathAggregation = true
+    }
 }
 
 dependencies {
+
+    implementation(project(Module.Lib.resources))
 
     implementation(Libs.Android.coreKtx)
     implementation(Libs.Android.appCompat)
@@ -28,6 +42,8 @@ dependencies {
     implementation(Libs.Android.constraintLayout)
     implementation(Libs.Android.viewModel)
     implementation(Libs.Android.liveData)
+    implementation(Libs.Android.fragmentKtx)
+    implementation(Libs.Android.navigation)
 
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)
