@@ -23,7 +23,7 @@ class ListFragment : Fragment(R.layout.list_fragment) {
     private var _binding: ListFragmentBinding? = null
 
     private val binding
-        get() = _binding!!
+        get() = _binding!! // not proud of that, but haven't used view binding yet in production and didn't want to waste too much time
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +33,7 @@ class ListFragment : Fragment(R.layout.list_fragment) {
         registerObservers()
         setupRefreshAction()
         fetchData()
-        // TODO handle savedInstanceState
+        // TODO handle savedInstanceState - as better if time allows
     }
 
     override fun onDestroyView() {

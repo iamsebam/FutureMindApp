@@ -8,5 +8,6 @@ object Module {
     object Lib {
 
         const val resources = ":resourcesLib"
+        const val network = ":networkLib"
     }
 }

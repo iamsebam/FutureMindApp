@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.RoundedCornersTransformation
+import com.sebastianmatyjaszczyk.listfeature.R
 import com.sebastianmatyjaszczyk.listfeature.databinding.ListViewItemBinding
 import com.sebastianmatyjaszczyk.listfeature.domain.ListViewItem
 
@@ -30,7 +33,12 @@ class ListViewAdapter(
                 title.text = viewItem.title
                 description.text = viewItem.description
                 modificationDate.text = viewItem.modificationDate
-                // TODO show image - lazy load, handle progress bar and errors
+                // unfortunately the provided image mocking service doesn't work, I took the liberty of replacing it with bears photos :)
+                image.load("https://placebear.com/120/120") {
+                    crossfade(true)
+                    placeholder(R.drawable.image_placeholder)
+                    transformations(RoundedCornersTransformation(30f))
+                }
                 root.setOnClickListener { onItemSelectedListener }
             }
         }

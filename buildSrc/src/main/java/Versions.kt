@@ -41,6 +41,8 @@ object Versions {
     object Tools {
 
         const val retrofit = "2.9.0"
+        const val gson = "2.8.6"
+        const val gsonConverter = "2.9.0"
         const val coroutines = "1.3.9"
         const val coil = "1.1.1"
         const val ktLint = "3.4.0"

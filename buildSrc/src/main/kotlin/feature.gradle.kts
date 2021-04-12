@@ -35,6 +35,7 @@ android {
 dependencies {
 
     implementation(project(Module.Lib.resources))
+    implementation(project(Module.Lib.network))
 
     implementation(Libs.Android.coreKtx)
     implementation(Libs.Android.appCompat)

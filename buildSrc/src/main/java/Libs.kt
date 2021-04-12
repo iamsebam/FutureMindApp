@@ -36,6 +36,8 @@ object Libs {
     object Tools {
 
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.Tools.retrofit}"
+        const val gson = "com.google.code.gson:gson:${Versions.Tools.gson}"
+        const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.Tools.gsonConverter}"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Tools.coroutines}"
         const val coil = "io.coil-kt:coil:${Versions.Tools.coil}"
         const val ktLint = "org.jmailen.gradle:kotlinter-gradle:${Versions.Tools.ktLint}"

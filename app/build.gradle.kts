@@ -30,7 +30,9 @@ android {
 dependencies {
 
     implementation(project(Module.Feature.list))
+
     implementation(project(Module.Lib.resources))
+    implementation(project(Module.Lib.network))
 
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)

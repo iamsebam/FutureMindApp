@@ -18,7 +18,7 @@ class ListViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _listViewItems: MutableLiveData<ViewEntity> = MutableLiveData()
-    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData()
     private val _error: MutableLiveData<String> = MutableLiveData()
 
     val listViewItems: LiveData<ViewEntity> get() = _listViewItems
@@ -28,7 +28,7 @@ class ListViewModel @Inject constructor(
     fun fetchData() {
         viewModelScope.launch {
             _isLoading.value = true
-            val result = listRepository.fetchData()
+            val result = listRepository.loadData()
             _isLoading.value = false
             when (result) {
                 is ListResult.Success -> _listViewItems.value = result.data

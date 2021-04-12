@@ -7,4 +7,7 @@ data class ListViewItem(
     val imageUrl: String,
     val detailUrl: String,
     val modificationDate: String
-)
+) : Comparable<ListViewItem> {
+
+    override fun compareTo(other: ListViewItem) = id - other.id
+}
