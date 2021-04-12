@@ -10,6 +10,7 @@ import coil.transform.RoundedCornersTransformation
 import com.sebastianmatyjaszczyk.listfeature.R
 import com.sebastianmatyjaszczyk.listfeature.databinding.ListViewItemBinding
 import com.sebastianmatyjaszczyk.listfeature.domain.ListViewItem
+import com.sebastianmatyjaszczyk.resourceslib.ImageViewConstants
 
 class ListViewAdapter(
     private val onItemSelectedListener: (item: ListViewItem) -> Unit
@@ -37,7 +38,7 @@ class ListViewAdapter(
                 image.load("https://placebear.com/120/120") {
                     crossfade(true)
                     placeholder(R.drawable.image_placeholder)
-                    transformations(RoundedCornersTransformation(30f))
+                    transformations(RoundedCornersTransformation(ImageViewConstants.cornerRadius))
                 }
                 root.setOnClickListener { onItemSelectedListener }
             }
