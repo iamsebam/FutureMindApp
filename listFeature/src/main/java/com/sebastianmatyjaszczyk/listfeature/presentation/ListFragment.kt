@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.sebastianmatyjaszczyk.listfeature.R
 import com.sebastianmatyjaszczyk.listfeature.databinding.ListFragmentBinding
-import com.sebastianmatyjaszczyk.listfeature.domain.ListViewItem
+import com.sebastianmatyjaszczyk.listfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
 import com.sebastianmatyjaszczyk.listfeature.model.ListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +18,7 @@ class ListFragment : Fragment(R.layout.list_fragment) {
 
     private val adapter by lazy { ListViewAdapter(onItemSelectedListener) }
 
-    private lateinit var onItemSelectedListener: (item: ListViewItem) -> Unit
+    private lateinit var onItemSelectedListener: (item: ListItemViewEntity) -> Unit
 
     private var _binding: ListFragmentBinding? = null
 
@@ -29,11 +29,9 @@ class ListFragment : Fragment(R.layout.list_fragment) {
         super.onViewCreated(view, savedInstanceState)
         applyViewBinding(view)
         setupOnItemSelectedListener()
+        setupOnRefreshListener()
         setupListAdapter()
-        registerObservers()
-        setupRefreshAction()
-        fetchData()
-        // TODO handle savedInstanceState - as better if time allows
+        observeLiveData()
     }
 
     override fun onDestroyView() {
@@ -57,20 +55,20 @@ class ListFragment : Fragment(R.layout.list_fragment) {
         binding.listView.adapter = adapter
     }
 
-    private fun registerObservers() {
+    private fun observeLiveData() {
         viewModel.listViewItems.observe(viewLifecycleOwner, { handleData(it) })
         viewModel.isLoading.observe(viewLifecycleOwner, { handleLoading(it) })
         viewModel.error.observe(viewLifecycleOwner, { handleError(it) })
     }
 
-    private fun setupRefreshAction() {
+    private fun setupOnRefreshListener() {
         binding.swipeRefresh.setOnRefreshListener {
-            fetchData()
+            refreshData()
         }
     }
 
-    private fun fetchData() {
-        viewModel.fetchData()
+    private fun refreshData() {
+        viewModel.refreshData()
     }
 
     private fun handleData(viewEntity: ViewEntity) {

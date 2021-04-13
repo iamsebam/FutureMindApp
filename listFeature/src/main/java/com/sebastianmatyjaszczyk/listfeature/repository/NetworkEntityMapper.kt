@@ -1,7 +1,8 @@
 package com.sebastianmatyjaszczyk.listfeature.repository
 
 import android.util.Patterns
-import com.sebastianmatyjaszczyk.listfeature.domain.ListViewItem
+import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity
+import com.sebastianmatyjaszczyk.listfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
 import com.sebastianmatyjaszczyk.networklib.listApi.NetworkEntity
 import javax.inject.Inject
@@ -10,13 +11,28 @@ class NetworkEntityMapper @Inject constructor() {
 
     fun mapToViewEntity(networkEntityList: List<NetworkEntity>) =
         ViewEntity(
-            networkEntityList.map { it.toListViewItem() }
+            networkEntityList.map { it.toListItemViewEntity() }
         )
+
+    fun mapToDatabaseEntities(networkEntityList: List<NetworkEntity>) =
+        networkEntityList.map { it.toListItemDatabaseEntity() }
 }
 
-private fun NetworkEntity.toListViewItem(): ListViewItem {
+private fun NetworkEntity.toListItemDatabaseEntity(): ListItemEntity {
     val (description, detailUrl) = this.description.separateUrl()
-    return ListViewItem(
+    return ListItemEntity(
+        id = orderId,
+        title = title,
+        description = description.trim(),
+        imageUrl = imageUrl,
+        detailUrl = detailUrl.trim(),
+        modificationDate = modificationDate
+    )
+}
+
+private fun NetworkEntity.toListItemViewEntity(): ListItemViewEntity {
+    val (description, detailUrl) = this.description.separateUrl()
+    return ListItemViewEntity(
         id = orderId,
         title = title,
         description = description.trim(),

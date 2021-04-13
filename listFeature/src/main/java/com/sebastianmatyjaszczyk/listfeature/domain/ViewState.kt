@@ -1,12 +1,12 @@
 package com.sebastianmatyjaszczyk.listfeature.domain
 
-sealed class ListResult {
+sealed class ViewState {
 
     data class Success(
         val data: ViewEntity
-    ) : ListResult()
+    ) : ViewState()
 
     class Error(
         val error: Throwable
-    ) : ListResult()
+    ) : ViewState()
 }

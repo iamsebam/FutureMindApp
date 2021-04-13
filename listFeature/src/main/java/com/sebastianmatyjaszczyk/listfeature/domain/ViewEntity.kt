@@ -1,7 +1,7 @@
 package com.sebastianmatyjaszczyk.listfeature.domain
 
 data class ViewEntity(
-    val data: List<ListViewItem>
+    val data: List<ListItemViewEntity>
 )
 
 internal fun ViewEntity.sorted() = copy(
