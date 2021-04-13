@@ -3,7 +3,7 @@ package com.sebastianmatyjaszczyk.listfeature.repository
 import android.util.Patterns
 import com.sebastianmatyjaszczyk.listfeature.domain.ListViewItem
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
-import com.sebastianmatyjaszczyk.networklib.response.NetworkEntity
+import com.sebastianmatyjaszczyk.networklib.listApi.NetworkEntity
 import javax.inject.Inject
 
 class NetworkEntityMapper @Inject constructor() {

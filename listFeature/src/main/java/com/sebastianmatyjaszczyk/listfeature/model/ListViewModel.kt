@@ -8,6 +8,7 @@ import com.sebastianmatyjaszczyk.listfeature.domain.ListResult
 import com.sebastianmatyjaszczyk.listfeature.domain.ListViewItem
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
 import com.sebastianmatyjaszczyk.listfeature.repository.ListRepository
+import com.sebastianmatyjaszczyk.networklib.response.NetworkError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,8 +33,15 @@ class ListViewModel @Inject constructor(
             _isLoading.value = false
             when (result) {
                 is ListResult.Success -> _listViewItems.value = result.data
-                is ListResult.Error -> _error.value = result.error.message
+                is ListResult.Error -> showError(result.error)
             }
+        }
+    }
+
+    private fun showError(error: Throwable) {
+        when (error) {
+            is NetworkError.NoNetworkError -> _error.value = "No Internet connection."
+            else -> _error.value = error.message
         }
     }
 

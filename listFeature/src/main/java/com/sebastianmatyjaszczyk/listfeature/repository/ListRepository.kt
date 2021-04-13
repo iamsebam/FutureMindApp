@@ -2,6 +2,7 @@ package com.sebastianmatyjaszczyk.listfeature.repository
 
 import com.sebastianmatyjaszczyk.listfeature.domain.ListResult
 import com.sebastianmatyjaszczyk.listfeature.domain.sorted
+import com.sebastianmatyjaszczyk.networklib.response.NetworkResponse
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,11 +19,15 @@ class ListRepository @Inject constructor(
     private suspend fun fetchDataFromRemote() =
         withContext(Dispatchers.IO) {
             try {
-                val result = remoteSource.fetchList()
-                val mappedResult = networkEntityMapper.mapToViewEntity(result).sorted()
-                ListResult.Success(mappedResult)
-            } catch (e: Throwable) {
-                ListResult.Error(e)
+                when (val result = remoteSource.fetchList()) {
+                    is NetworkResponse.Success -> {
+                        val mappedResult = networkEntityMapper.mapToViewEntity(result.data).sorted()
+                        ListResult.Success(mappedResult)
+                    }
+                    is NetworkResponse.Failure -> ListResult.Error(result.error)
+                }
+            } catch (error: Throwable) {
+                ListResult.Error(error)
             }
         }
 }

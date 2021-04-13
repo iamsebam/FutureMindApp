@@ -35,6 +35,7 @@ object Libs {
 
     object Tools {
 
+        const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.Tools.okHttp}"
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.Tools.retrofit}"
         const val gson = "com.google.code.gson:gson:${Versions.Tools.gson}"
         const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.Tools.gsonConverter}"

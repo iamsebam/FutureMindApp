@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.networklib.response
+package com.sebastianmatyjaszczyk.networklib.listApi
 
 import com.google.gson.annotations.SerializedName
 

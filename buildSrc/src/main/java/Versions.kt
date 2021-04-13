@@ -40,6 +40,7 @@ object Versions {
 
     object Tools {
 
+        const val okHttp = "4.9.1"
         const val retrofit = "2.9.0"
         const val gson = "2.8.6"
         const val gsonConverter = "2.9.0"

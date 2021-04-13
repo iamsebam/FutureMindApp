@@ -1,6 +1,6 @@
 package com.sebastianmatyjaszczyk.listfeature.repository
 
-import com.sebastianmatyjaszczyk.networklib.ListApi
+import com.sebastianmatyjaszczyk.networklib.listApi.ListApi
 import javax.inject.Inject
 
 class ListDataProvider @Inject constructor(
