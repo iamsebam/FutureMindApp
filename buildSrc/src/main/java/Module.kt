@@ -10,5 +10,6 @@ object Module {
         const val resources = ":resourcesLib"
         const val network = ":networkLib"
         const val database = ":databaseLib"
+        const val common = ":commonLib"
     }
 }

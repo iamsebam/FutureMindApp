@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.listfeature.repository
+package com.sebastianmatyjaszczyk.listfeature.util
 
 import android.util.Patterns
 import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity

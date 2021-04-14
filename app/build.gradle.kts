@@ -32,8 +32,6 @@ dependencies {
     implementation(project(Module.Feature.list))
 
     implementation(project(Module.Lib.resources))
-    implementation(project(Module.Lib.network))
-    implementation(project(Module.Lib.database))
 
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)

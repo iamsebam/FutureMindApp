@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.listfeature.repository
+package com.sebastianmatyjaszczyk.commonlib
 
 sealed class Result<out S> {
 

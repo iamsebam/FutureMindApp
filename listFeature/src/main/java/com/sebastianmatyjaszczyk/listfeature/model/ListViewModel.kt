@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sebastianmatyjaszczyk.commonlib.Result
+import com.sebastianmatyjaszczyk.commonlib.ViewState
 import com.sebastianmatyjaszczyk.listfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
-import com.sebastianmatyjaszczyk.listfeature.domain.ViewState
 import com.sebastianmatyjaszczyk.listfeature.repository.ListRepository
-import com.sebastianmatyjaszczyk.listfeature.repository.Result
-import com.sebastianmatyjaszczyk.listfeature.repository.ViewEntityMapper
+import com.sebastianmatyjaszczyk.listfeature.util.ViewEntityMapper
 import com.sebastianmatyjaszczyk.networklib.response.NetworkError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,9 +24,9 @@ class ListViewModel @Inject constructor(
     private val viewEntityMapper: ViewEntityMapper
 ) : ViewModel() {
 
-    private val _viewState: MutableLiveData<ViewState> = MutableLiveData()
+    private val _viewState: MutableLiveData<ViewState<ViewEntity>> = MutableLiveData()
 
-    val viewState: LiveData<ViewState> get() = _viewState
+    val viewState: LiveData<ViewState<ViewEntity>> get() = _viewState
 
     init {
         observeListItems()

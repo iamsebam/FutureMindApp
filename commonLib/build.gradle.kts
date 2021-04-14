@@ -24,7 +24,4 @@ dependencies {
 
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)
-    implementation(Libs.Database.room)
-    kapt(Libs.Database.roomCompiler)
-    implementation(Libs.Database.roomKtx)
 }

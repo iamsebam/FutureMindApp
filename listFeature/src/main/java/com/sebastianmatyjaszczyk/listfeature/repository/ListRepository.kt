@@ -1,7 +1,10 @@
 package com.sebastianmatyjaszczyk.listfeature.repository
 
+import com.sebastianmatyjaszczyk.commonlib.Result
 import com.sebastianmatyjaszczyk.databaselib.dao.ListItemDao
 import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity
+import com.sebastianmatyjaszczyk.listfeature.util.NetworkEntityMapper
+import com.sebastianmatyjaszczyk.networklib.listApi.ListApi
 import com.sebastianmatyjaszczyk.networklib.response.NetworkResponse
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +19,7 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 class ListRepository @Inject constructor(
     private val dao: ListItemDao,
-    private val remoteSource: ListDataProvider,
+    private val remoteSource: ListApi,
     private val networkEntityMapper: NetworkEntityMapper
 ) {
 
@@ -40,10 +43,10 @@ class ListRepository @Inject constructor(
             if (result is Result.Success) cacheData(result.data)
         }
 
-    private suspend fun fetchData(): Result<List<ListItemEntity>> =
+    private suspend fun fetchData() =
         withContext(Dispatchers.IO) {
             try {
-                when (val result = remoteSource.fetchList()) {
+                when (val result = remoteSource.get()) {
                     is NetworkResponse.Success -> {
                         val domainListItems = networkEntityMapper.mapToDomainEntities(result.data)
                         emptyOrSuccess(domainListItems)
@@ -64,7 +67,7 @@ class ListRepository @Inject constructor(
     private suspend fun fetchFromCacheOrError(error: Throwable) =
         fetchFromCache().takeIf { it.isNotEmpty() } ?: Result.Failure(error)
 
-    private suspend fun fetchFromCache(): Result<List<ListItemEntity>> =
+    private suspend fun fetchFromCache() =
         withContext(Dispatchers.IO) {
             val result = dao.getAllSorted()
             Result.Success(result).takeIf { result.isNotEmpty() } ?: Result.Empty

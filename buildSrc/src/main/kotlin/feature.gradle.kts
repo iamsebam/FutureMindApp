@@ -37,6 +37,7 @@ dependencies {
     implementation(project(Module.Lib.resources))
     implementation(project(Module.Lib.network))
     implementation(project(Module.Lib.database))
+    implementation(project(Module.Lib.common))
 
     implementation(Libs.Android.coreKtx)
     implementation(Libs.Android.appCompat)

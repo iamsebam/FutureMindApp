@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.sebastianmatyjaszczyk.commonlib.ViewState
+import com.sebastianmatyjaszczyk.commonlib.setVisible
 import com.sebastianmatyjaszczyk.listfeature.R
 import com.sebastianmatyjaszczyk.listfeature.databinding.ListFragmentBinding
 import com.sebastianmatyjaszczyk.listfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
-import com.sebastianmatyjaszczyk.listfeature.domain.ViewState
 import com.sebastianmatyjaszczyk.listfeature.model.ListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -72,7 +73,7 @@ class ListFragment : Fragment(R.layout.list_fragment) {
         viewModel.refreshData()
     }
 
-    private fun handleViewState(viewState: ViewState) {
+    private fun handleViewState(viewState: ViewState<ViewEntity>) {
         when (viewState) {
             is ViewState.Loading -> displayLoading()
             is ViewState.Error -> displayError(viewState.message)
@@ -113,8 +114,4 @@ class ListFragment : Fragment(R.layout.list_fragment) {
     private fun setListVisible(visible: Boolean) {
         binding.listView.setVisible(visible)
     }
-}
-
-private fun View.setVisible(visible: Boolean, hiddenState: Int = View.GONE) {
-    visibility = if (visible) View.VISIBLE else hiddenState
 }
