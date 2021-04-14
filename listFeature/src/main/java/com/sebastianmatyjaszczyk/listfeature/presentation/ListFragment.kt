@@ -11,8 +11,10 @@ import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewState
 import com.sebastianmatyjaszczyk.listfeature.model.ListViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @AndroidEntryPoint
+@ExperimentalCoroutinesApi
 class ListFragment : Fragment(R.layout.list_fragment) {
 
     private val viewModel by viewModels<ListViewModel>()

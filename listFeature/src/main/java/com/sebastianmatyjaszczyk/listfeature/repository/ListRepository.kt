@@ -17,48 +17,58 @@ import javax.inject.Inject
 class ListRepository @Inject constructor(
     private val dao: ListItemDao,
     private val remoteSource: ListDataProvider,
-    private val networkEntityMapper: NetworkEntityMapper,
+    private val networkEntityMapper: NetworkEntityMapper
 ) {
 
-    private val _listItemFlow: MutableStateFlow<Result<List<ListItemEntity>>> = MutableStateFlow(Result.Loading)
+    private val _listItemsFlow: MutableStateFlow<Result<List<ListItemEntity>>> = MutableStateFlow(Result.Loading)
 
-    val listItemsFlow: StateFlow<Result<List<ListItemEntity>>> = _listItemFlow.asStateFlow()
+    val listItemsFlow: StateFlow<Result<List<ListItemEntity>>> = _listItemsFlow.asStateFlow()
 
-    suspend fun refresh() {
-        _listItemFlow.value = fetchAndCacheDataFromRemote()
+    suspend fun loadData() {
+        _listItemsFlow.value = Result.Loading
+        _listItemsFlow.value = fetchFromCache().takeIf { it.isNotEmpty() }
+            ?: fetchFromRemoteAndCache()
     }
 
-    private suspend fun fetchAndCacheDataFromRemote(): Result<List<ListItemEntity>> = withContext(Dispatchers.IO) {
-        try {
-            Result.Loading
-            when (val result = remoteSource.fetchList()) {
-                is NetworkResponse.Success -> {
-                    val domainListItems = networkEntityMapper.mapToDomainEntities(result.data)
-                    emptyOrSuccessAndCache(domainListItems)
-                }
-                is NetworkResponse.Failure -> fetchFromCacheOrError(result.error)
-            }
-        } catch (error: Throwable) {
-            fetchFromCacheOrError(error)
+    suspend fun refreshData() {
+        _listItemsFlow.value = Result.Loading
+        _listItemsFlow.value = fetchFromRemoteAndCache()
+    }
+
+    private suspend fun fetchFromRemoteAndCache() =
+        fetchData().also { result ->
+            if (result is Result.Success) cacheData(result.data)
         }
-    }
 
-    private suspend fun emptyOrSuccessAndCache(domainListItems: List<ListItemEntity>) =
+    private suspend fun fetchData(): Result<List<ListItemEntity>> =
+        withContext(Dispatchers.IO) {
+            try {
+                when (val result = remoteSource.fetchList()) {
+                    is NetworkResponse.Success -> {
+                        val domainListItems = networkEntityMapper.mapToDomainEntities(result.data)
+                        emptyOrSuccess(domainListItems)
+                    }
+                    is NetworkResponse.Failure -> fetchFromCacheOrError(result.error)
+                }
+            } catch (error: Throwable) {
+                fetchFromCacheOrError(error)
+            }
+        }
+
+    private fun emptyOrSuccess(domainListItems: List<ListItemEntity>) =
         when {
             domainListItems.isEmpty() -> Result.Empty
-            else -> {
-                cacheData(domainListItems)
-                Result.Success(domainListItems)
-            }
+            else -> Result.Success(domainListItems)
         }
 
     private suspend fun fetchFromCacheOrError(error: Throwable) =
         fetchFromCache().takeIf { it.isNotEmpty() } ?: Result.Failure(error)
 
-    private suspend fun fetchFromCache(): Result<List<ListItemEntity>> = withContext(Dispatchers.IO) {
-        val result = dao.getAllSorted()
-        Result.Success(result).takeIf { result.isNotEmpty() } ?: Result.Empty
-    }
+    private suspend fun fetchFromCache(): Result<List<ListItemEntity>> =
+        withContext(Dispatchers.IO) {
+            val result = dao.getAllSorted()
+            Result.Success(result).takeIf { result.isNotEmpty() } ?: Result.Empty
+        }
 
     private suspend fun cacheData(listItems: List<ListItemEntity>) =
         withContext(Dispatchers.IO) {

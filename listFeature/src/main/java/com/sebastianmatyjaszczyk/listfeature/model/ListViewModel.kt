@@ -30,11 +30,21 @@ class ListViewModel @Inject constructor(
 
     init {
         observeListItems()
+        loadData()
+    }
+
+    fun refreshData() {
+        viewModelScope.launch {
+            listRepository.refreshData()
+        }
+    }
+
+    fun onItemSelected(item: ListItemViewEntity) {
+        // TODO open the webview with the detailUrl provided
     }
 
     private fun observeListItems() {
         viewModelScope.launch {
-            listRepository.refresh()
             listRepository.listItemsFlow.collect { result ->
                 when (result) {
                     is Result.Success -> {
@@ -49,9 +59,9 @@ class ListViewModel @Inject constructor(
         }
     }
 
-    fun refreshData() {
+    private fun loadData() {
         viewModelScope.launch {
-            listRepository.refresh()
+            listRepository.loadData()
         }
     }
 
@@ -73,9 +83,5 @@ class ListViewModel @Inject constructor(
             else -> error.message
         } ?: "Something went terribly wrong."
         _viewState.value = ViewState.Error(errorMessage)
-    }
-
-    fun onItemSelected(item: ListItemViewEntity) {
-        // TODO open the webview with the detailUrl provided
     }
 }
