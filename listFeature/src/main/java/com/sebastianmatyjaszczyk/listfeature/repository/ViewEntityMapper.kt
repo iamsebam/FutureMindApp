@@ -5,7 +5,7 @@ import com.sebastianmatyjaszczyk.listfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
 import javax.inject.Inject
 
-class DatabaseEntityMapper @Inject constructor() {
+class ViewEntityMapper @Inject constructor() {
 
     fun mapToViewEntity(databaseEntities: List<ListItemEntity>) =
         ViewEntity(

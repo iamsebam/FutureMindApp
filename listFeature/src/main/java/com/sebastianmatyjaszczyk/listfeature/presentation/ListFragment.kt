@@ -8,6 +8,7 @@ import com.sebastianmatyjaszczyk.listfeature.R
 import com.sebastianmatyjaszczyk.listfeature.databinding.ListFragmentBinding
 import com.sebastianmatyjaszczyk.listfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.listfeature.domain.ViewEntity
+import com.sebastianmatyjaszczyk.listfeature.domain.ViewState
 import com.sebastianmatyjaszczyk.listfeature.model.ListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,7 +32,7 @@ class ListFragment : Fragment(R.layout.list_fragment) {
         setupOnItemSelectedListener()
         setupOnRefreshListener()
         setupListAdapter()
-        observeLiveData()
+        observeViewState()
     }
 
     override fun onDestroyView() {
@@ -55,10 +56,8 @@ class ListFragment : Fragment(R.layout.list_fragment) {
         binding.listView.adapter = adapter
     }
 
-    private fun observeLiveData() {
-        viewModel.listViewItems.observe(viewLifecycleOwner, { handleData(it) })
-        viewModel.isLoading.observe(viewLifecycleOwner, { handleLoading(it) })
-        viewModel.error.observe(viewLifecycleOwner, { handleError(it) })
+    private fun observeViewState() {
+        viewModel.viewState.observe(viewLifecycleOwner, { handleViewState(it) })
     }
 
     private fun setupOnRefreshListener() {
@@ -71,19 +70,29 @@ class ListFragment : Fragment(R.layout.list_fragment) {
         viewModel.refreshData()
     }
 
-    private fun handleData(viewEntity: ViewEntity) {
+    private fun handleViewState(viewState: ViewState) {
+        when (viewState) {
+            is ViewState.Loading -> displayLoading()
+            is ViewState.Error -> displayError(viewState.message)
+            is ViewState.Success -> displayData(viewState.data)
+        }
+    }
+
+    private fun displayData(viewEntity: ViewEntity) {
+        displayLoading(false)
         setErrorVisible(false)
         setListVisible(true)
         setListData(viewEntity)
     }
 
-    private fun handleError(message: String) {
+    private fun displayError(message: String) {
+        displayLoading(false)
         setListVisible(false)
         setErrorVisible(true)
         setErrorText(message)
     }
 
-    private fun handleLoading(isLoading: Boolean) {
+    private fun displayLoading(isLoading: Boolean = true) {
         binding.swipeRefresh.isRefreshing = isLoading
     }
 

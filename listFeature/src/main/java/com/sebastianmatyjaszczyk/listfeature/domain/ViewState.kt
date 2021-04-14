@@ -7,6 +7,8 @@ sealed class ViewState {
     ) : ViewState()
 
     class Error(
-        val error: Throwable
+        val message: String
     ) : ViewState()
+
+    object Loading : ViewState()
 }
