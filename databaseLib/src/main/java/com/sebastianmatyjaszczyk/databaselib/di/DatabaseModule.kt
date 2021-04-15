@@ -24,9 +24,7 @@ object AppDatabase {
             "list_item_database"
         ).build()
 
-
     @Singleton
     @Provides
     fun provideListItemDao(database: ListItemRoomDatabase): ListItemDao = database.listItemDao()
-
 }

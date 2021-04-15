@@ -1,11 +1,5 @@
 object Libs {
 
-    object Gradle {
-
-        const val gradleBuildTools = "com.android.tools.build:gradle:${Versions.Gradle.gradleBuildTools}"
-        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Gradle.kotlinGradlePlugin}"
-    }
-
     object Di {
 
         const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.Di.hilt}"
@@ -24,6 +18,8 @@ object Libs {
         const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.Android.fragmentKtx}"
         const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.Android.swipeRefreshLayout}"
         const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.Android.navigation}"
+        const val lifecycleCommon = "androidx.lifecycle:lifecycle-common-java8:${Versions.Android.lifecycle}"
+        const val lifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:${Versions.Android.lifecycle}"
     }
 
     object Database {
@@ -42,6 +38,9 @@ object Libs {
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Tools.coroutines}"
         const val coil = "io.coil-kt:coil:${Versions.Tools.coil}"
         const val ktLint = "org.jmailen.gradle:kotlinter-gradle:${Versions.Tools.ktLint}"
+        const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.Android.navigation}"
+        const val gradleBuildTools = "com.android.tools.build:gradle:${Versions.Tools.gradleBuildTools}"
+        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Tools.kotlinGradlePlugin}"
     }
 
     object Test {

@@ -9,5 +9,4 @@ class SourceStringParser @Inject constructor(
 ) {
 
     fun parse(string: String): LocalDate = LocalDate.parse(string, dateTimeFormatter)
-
 }

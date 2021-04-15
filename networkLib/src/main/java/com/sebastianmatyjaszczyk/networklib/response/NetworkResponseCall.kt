@@ -38,7 +38,7 @@ internal class NetworkResponseCall<R>(
 
         body()?.let { body -> return NetworkResponse.Success(body) }
 
-        return if (successType==Unit::class.java) {
+        return if (successType == Unit::class.java) {
             NetworkResponse.Success(Unit) as NetworkResponse<R, NetworkError>
         } else {
             NetworkResponse.Failure(UnknownError("Response body was null")) as NetworkResponse<R, NetworkError>

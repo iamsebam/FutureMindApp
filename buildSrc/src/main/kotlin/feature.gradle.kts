@@ -1,23 +1,11 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
+    id("baseLibrary")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
-    compileSdkVersion(Versions.App.sdkVersion)
-
-    defaultConfig {
-        minSdkVersion(Versions.App.minSdk)
-        targetSdkVersion(Versions.App.sdkVersion)
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-        }
-    }
 
     kotlinOptions {
         jvmTarget = "1.8"

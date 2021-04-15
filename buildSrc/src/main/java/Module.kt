@@ -2,7 +2,7 @@ object Module {
 
     object Feature {
 
-        const val list = ":listFeature"
+        const val main = ":mainFeature"
     }
 
     object Lib {

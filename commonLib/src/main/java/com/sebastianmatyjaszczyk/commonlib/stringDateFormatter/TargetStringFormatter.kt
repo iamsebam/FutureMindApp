@@ -9,5 +9,4 @@ class TargetStringFormatter @Inject constructor(
 ) {
 
     fun format(localDate: LocalDate): String = dateTimeFormatter.format(localDate)
-
 }

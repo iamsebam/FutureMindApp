@@ -1,26 +1,21 @@
 plugins {
-    id(Plugin.Android.library)
-    kotlin(Plugin.Kotlin.android)
+    id(Plugin.App.baseLibrary)
     kotlin(Plugin.Kotlin.kapt)
     id(Plugin.Di.hilt)
 }
 
 android {
-    compileSdk = Versions.App.sdkVersion
-
-    defaultConfig {
-        minSdk = Versions.App.minSdk
-        targetSdk = Versions.App.sdkVersion
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-        }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
 dependencies {
+
+    implementation(Libs.Android.lifecycleCommon)
+    implementation(Libs.Android.lifecycleRuntime)
+    implementation(Libs.Android.liveData)
+    implementation(Libs.Android.fragmentKtx)
 
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)

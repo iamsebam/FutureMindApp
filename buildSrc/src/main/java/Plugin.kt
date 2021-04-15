@@ -3,6 +3,7 @@ object Plugin {
     object App {
 
         const val feature = "feature"
+        const val baseLibrary = "baseLibrary"
     }
 
     object Android {
@@ -25,5 +26,6 @@ object Plugin {
     object Tools {
 
         const val ktLint = "org.jmailen.kotlinter"
+        const val safeArgs = "androidx.navigation.safeargs.kotlin"
     }
 }

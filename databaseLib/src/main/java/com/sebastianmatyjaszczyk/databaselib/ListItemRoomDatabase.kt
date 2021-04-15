@@ -9,6 +9,4 @@ import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity
 abstract class ListItemRoomDatabase : RoomDatabase() {
 
     abstract fun listItemDao(): ListItemDao
-
-
 }

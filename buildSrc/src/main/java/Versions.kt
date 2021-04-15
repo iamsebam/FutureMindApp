@@ -10,12 +10,6 @@ object Versions {
 
     }
 
-    object Gradle {
-
-        const val gradleBuildTools = "7.0.0-alpha14"
-        const val kotlinGradlePlugin = "1.4.31"
-    }
-
     object Di {
 
         const val hilt = "2.33-beta"
@@ -47,6 +41,8 @@ object Versions {
         const val coroutines = "1.3.9"
         const val coil = "1.1.1"
         const val ktLint = "3.4.0"
+        const val gradleBuildTools = "7.0.0-alpha14"
+        const val kotlinGradlePlugin = "1.4.31"
     }
 
     object Test {

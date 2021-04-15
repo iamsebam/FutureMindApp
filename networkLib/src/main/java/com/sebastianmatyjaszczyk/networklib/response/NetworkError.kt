@@ -8,5 +8,3 @@ sealed class NetworkError : RuntimeException() {
 
     data class UnknownError(val throwable: Throwable) : NetworkError()
 }
-
-

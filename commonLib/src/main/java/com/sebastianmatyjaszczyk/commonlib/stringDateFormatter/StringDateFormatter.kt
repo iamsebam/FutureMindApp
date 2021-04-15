@@ -7,7 +7,6 @@ class StringDateFormatter @Inject constructor(
     private val targetStringFormatter: TargetStringFormatter
 ) {
 
-    fun format(date: String): String {
-        return targetStringFormatter.format(sourceStringParser.parse(date))
-    }
+    fun format(date: String): String =
+        targetStringFormatter.format(sourceStringParser.parse(date))
 }

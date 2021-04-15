@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_feature"
+    app:startDestination="@id/list_fragment">
+    
+    <fragment
+        android:id="@+id/list_fragment"
+        android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.list.ListFragment"
+        android:label="List">
+        
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@id/detail_fragment" />
+    
+    </fragment>
+    
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.detail.DetailFragment"
+        android:label="Detail">
+        
+        <argument
+            android:name="detailUrl"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+</navigation>

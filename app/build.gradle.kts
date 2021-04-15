@@ -29,12 +29,14 @@ android {
 
 dependencies {
 
-    implementation(project(Module.Feature.list))
+    implementation(project(Module.Feature.main))
 
     implementation(project(Module.Lib.resources))
 
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)
+    implementation(Libs.Android.navigation)
+    implementation(Libs.Android.appCompat)
 }
 
 apply(plugin = Plugin.Tools.ktLint)
