@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.resourceslib
+package com.sebastianmatyjaszczyk.mainfeature.presentation.misc
 
 object ImageViewConstants {
 

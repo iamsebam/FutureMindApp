@@ -10,8 +10,8 @@ import coil.transform.RoundedCornersTransformation
 import com.sebastianmatyjaszczyk.mainfeature.R
 import com.sebastianmatyjaszczyk.mainfeature.databinding.ListViewItemBinding
 import com.sebastianmatyjaszczyk.mainfeature.domain.ListItemViewEntity
+import com.sebastianmatyjaszczyk.mainfeature.presentation.misc.ImageViewConstants
 import com.sebastianmatyjaszczyk.networklib.MOCK_IMAGE_SERVICE_URL
-import com.sebastianmatyjaszczyk.resourceslib.ImageViewConstants
 
 class ListViewAdapter(
     private val onItemSelectedListener: (item: ListItemViewEntity) -> Unit
