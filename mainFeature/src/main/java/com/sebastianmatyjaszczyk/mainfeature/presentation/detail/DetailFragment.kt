@@ -53,7 +53,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     }
 
     private fun displayLoading(loading: Boolean = true) {
-        binding.swipeRefresh.isRefreshing = loading
+        _binding?.swipeRefresh?.isRefreshing = loading
     }
 
     private fun setupSwipeRefreshListener() {
