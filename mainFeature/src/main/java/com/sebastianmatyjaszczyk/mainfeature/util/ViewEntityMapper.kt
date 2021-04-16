@@ -1,6 +1,6 @@
 package com.sebastianmatyjaszczyk.mainfeature.util
 
-import com.sebastianmatyjaszczyk.commonlib.stringDateFormatter.StringDateFormatter
+import com.sebastianmatyjaszczyk.commonlib.StringDateFormatter
 import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity
 import com.sebastianmatyjaszczyk.mainfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.mainfeature.domain.ViewEntity

@@ -1,8 +1,6 @@
 package com.sebastianmatyjaszczyk.mainfeature.di
 
-import com.sebastianmatyjaszczyk.commonlib.stringDateFormatter.SourceStringParser
-import com.sebastianmatyjaszczyk.commonlib.stringDateFormatter.StringDateFormatter
-import com.sebastianmatyjaszczyk.commonlib.stringDateFormatter.TargetStringFormatter
+import com.sebastianmatyjaszczyk.commonlib.StringDateFormatter
 import com.sebastianmatyjaszczyk.mainfeature.repository.DetailUrlRepository
 import com.sebastianmatyjaszczyk.resourceslib.ListFeatureDateFormats
 import dagger.Module
@@ -18,27 +16,11 @@ object ListFeatureModule {
 
     @Singleton
     @Provides
-    fun provideTargetStringFormatter(): TargetStringFormatter =
-        TargetStringFormatter(
+    fun provideStringDateFormatter(): StringDateFormatter =
+        StringDateFormatter(
+            DateTimeFormatter.ofPattern(ListFeatureDateFormats.SOURCE_DATE_FORMAT),
             DateTimeFormatter.ofPattern(ListFeatureDateFormats.TARGET_DATE_FORMAT)
         )
-
-    @Singleton
-    @Provides
-    fun provideSourceStringParser(): SourceStringParser =
-        SourceStringParser(
-            DateTimeFormatter.ofPattern(ListFeatureDateFormats.SOURCE_DATE_FORMAT)
-        )
-
-    @Singleton
-    @Provides
-    fun provideStringDateFormatter(
-        sourceStringParser: SourceStringParser,
-        targetStringFormatter: TargetStringFormatter
-    ): StringDateFormatter = StringDateFormatter(
-        sourceStringParser,
-        targetStringFormatter
-    )
 
     @Singleton
     @Provides
