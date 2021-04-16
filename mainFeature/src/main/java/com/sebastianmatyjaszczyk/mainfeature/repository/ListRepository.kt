@@ -48,7 +48,7 @@ class ListRepository @Inject constructor(
             try {
                 when (val result = remoteSource.get()) {
                     is NetworkResponse.Success -> {
-                        val domainListItems = networkEntityMapper.mapToDomainEntities(result.data)
+                        val domainListItems = networkEntityMapper.mapToSortedDomainEntities(result.data)
                         emptyOrSuccess(domainListItems)
                     }
                     is NetworkResponse.Failure -> fetchFromCacheOrError(result.error)

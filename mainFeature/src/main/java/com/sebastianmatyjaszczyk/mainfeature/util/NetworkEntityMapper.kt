@@ -7,8 +7,10 @@ import javax.inject.Inject
 
 class NetworkEntityMapper @Inject constructor() {
 
-    fun mapToDomainEntities(networkEntityList: List<NetworkEntity>) =
-        networkEntityList.map { it.toListItemEntity() }
+    fun mapToSortedDomainEntities(networkEntityList: List<NetworkEntity>) =
+        networkEntityList
+            .map { it.toListItemEntity() }
+            .sortedById()
 }
 
 private fun NetworkEntity.toListItemEntity(): ListItemEntity {
@@ -33,3 +35,5 @@ private fun String.separateUrl(): Pair<String, String> {
     val url = substring(matchStart)
     return Pair(noUrl, url)
 }
+
+private fun List<ListItemEntity>.sortedById() = sortedBy { it.id }
