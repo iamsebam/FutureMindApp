@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/spacing_sm"
             android:gravity="start"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/title"
             app:layout_constraintTop_toTopOf="@id/image"
@@ -56,12 +56,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_sm"
             android:justificationMode="inter_word"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barrier"
-            tools:text="Sample description Sample description Sample description Sample description Sample description Sample description Sample description Sample description" />
+            tools:text="Sample description" />
     
     </androidx.constraintlayout.widget.ConstraintLayout>
 
