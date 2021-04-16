@@ -3,4 +3,5 @@ plugins {
 }
 dependencies {
     implementation(Libs.Android.swipeRefreshLayout)
+    implementation(project(Module.MainFeature.lib))
 }

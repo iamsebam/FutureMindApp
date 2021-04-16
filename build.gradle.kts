@@ -9,6 +9,7 @@ buildscript {
         classpath(Libs.Tools.gradlePlugin)
         classpath(Libs.Tools.ktLint)
         classpath(Libs.Di.hiltGradlePlugin)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
     }
 }
 allprojects {

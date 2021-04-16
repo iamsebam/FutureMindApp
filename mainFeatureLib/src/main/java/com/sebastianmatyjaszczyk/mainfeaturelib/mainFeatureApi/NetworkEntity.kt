@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.networklib.listApi
+package com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureApi
 
 import com.google.gson.annotations.SerializedName
 

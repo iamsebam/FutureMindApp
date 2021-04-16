@@ -1,15 +1,15 @@
 object Module {
 
-    object Feature {
+    object MainFeature {
 
-        const val main = ":mainFeature"
+        const val feature = ":mainFeature"
+        const val lib = ":mainFeatureLib"
     }
 
     object Lib {
 
         const val resources = ":resourcesLib"
         const val network = ":networkLib"
-        const val database = ":databaseLib"
         const val common = ":commonLib"
     }
 }

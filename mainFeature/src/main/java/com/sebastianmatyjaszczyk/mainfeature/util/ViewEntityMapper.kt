@@ -1,9 +1,9 @@
 package com.sebastianmatyjaszczyk.mainfeature.util
 
 import com.sebastianmatyjaszczyk.commonlib.StringDateFormatter
-import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity
 import com.sebastianmatyjaszczyk.mainfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.mainfeature.domain.ViewEntity
+import com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureDatabase.ListItemEntity
 import javax.inject.Inject
 
 class ViewEntityMapper @Inject constructor(

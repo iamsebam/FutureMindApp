@@ -1,10 +1,9 @@
-package com.sebastianmatyjaszczyk.databaselib.dao
+package com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureDatabase
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity
 
 @Dao
 interface ListItemDao {

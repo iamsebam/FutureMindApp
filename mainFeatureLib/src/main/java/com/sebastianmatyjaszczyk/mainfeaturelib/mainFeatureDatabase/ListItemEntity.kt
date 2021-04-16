@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.databaselib.entity
+package com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureDatabase
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

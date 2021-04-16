@@ -1,11 +1,11 @@
 package com.sebastianmatyjaszczyk.mainfeature.repository
 
+import com.sebastianmatyjaszczyk.commonlib.NetworkResponse
 import com.sebastianmatyjaszczyk.commonlib.Result
-import com.sebastianmatyjaszczyk.databaselib.dao.ListItemDao
-import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity
 import com.sebastianmatyjaszczyk.mainfeature.util.NetworkEntityMapper
-import com.sebastianmatyjaszczyk.networklib.listApi.ListApi
-import com.sebastianmatyjaszczyk.networklib.response.NetworkResponse
+import com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureApi.MainFeatureApi
+import com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureDatabase.ListItemDao
+import com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureDatabase.ListItemEntity
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -19,7 +19,7 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 class ListRepository @Inject constructor(
     private val dao: ListItemDao,
-    private val remoteSource: ListApi,
+    private val remoteSource: MainFeatureApi,
     private val networkEntityMapper: NetworkEntityMapper
 ) {
 

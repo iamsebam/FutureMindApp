@@ -29,7 +29,7 @@ android {
 
 dependencies {
 
-    implementation(project(Module.Feature.main))
+    implementation(project(Module.MainFeature.feature))
 
     implementation(project(Module.Lib.resources))
 

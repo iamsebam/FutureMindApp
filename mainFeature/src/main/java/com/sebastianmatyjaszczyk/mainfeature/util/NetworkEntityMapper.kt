@@ -1,8 +1,8 @@
 package com.sebastianmatyjaszczyk.mainfeature.util
 
 import android.util.Patterns
-import com.sebastianmatyjaszczyk.databaselib.entity.ListItemEntity
-import com.sebastianmatyjaszczyk.networklib.listApi.NetworkEntity
+import com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureApi.NetworkEntity
+import com.sebastianmatyjaszczyk.mainfeaturelib.mainFeatureDatabase.ListItemEntity
 import javax.inject.Inject
 
 class NetworkEntityMapper @Inject constructor() {

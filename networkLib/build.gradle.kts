@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
 
+    implementation(project(Module.Lib.common))
+
     implementation(Libs.Di.hilt)
     kapt(Libs.Di.hiltCompiler)
     implementation(Libs.Tools.okHttp)

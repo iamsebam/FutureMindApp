@@ -1,5 +1,7 @@
 package com.sebastianmatyjaszczyk.networklib.response
 
+import com.sebastianmatyjaszczyk.commonlib.NetworkError
+import com.sebastianmatyjaszczyk.commonlib.NetworkResponse
 import retrofit2.Call
 import retrofit2.CallAdapter
 import retrofit2.Retrofit

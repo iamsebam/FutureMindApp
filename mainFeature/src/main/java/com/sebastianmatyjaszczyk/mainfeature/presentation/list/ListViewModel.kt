@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sebastianmatyjaszczyk.commonlib.NetworkError
 import com.sebastianmatyjaszczyk.commonlib.Result
 import com.sebastianmatyjaszczyk.commonlib.SingleLiveEvent
 import com.sebastianmatyjaszczyk.commonlib.ViewState
@@ -12,7 +13,6 @@ import com.sebastianmatyjaszczyk.mainfeature.domain.ViewEntity
 import com.sebastianmatyjaszczyk.mainfeature.repository.DetailUrlRepository
 import com.sebastianmatyjaszczyk.mainfeature.repository.ListRepository
 import com.sebastianmatyjaszczyk.mainfeature.util.ViewEntityMapper
-import com.sebastianmatyjaszczyk.networklib.response.NetworkError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect

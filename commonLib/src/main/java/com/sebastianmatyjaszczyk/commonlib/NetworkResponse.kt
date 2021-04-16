@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.networklib.response
+package com.sebastianmatyjaszczyk.commonlib
 
 sealed class NetworkResponse<out T, out E> {
 
