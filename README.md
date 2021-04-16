@@ -22,4 +22,4 @@ App is multimodule, constructed with the following assumptions:
 should depend only on feature library module characteristic for given feature, and common modules
 - app module should depend on feature modules and can depend on common modules
 
-<PastedGraphic-2.png>
+![Dependecy graph](PastedGraphic-2.png)
