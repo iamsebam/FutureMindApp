@@ -2,6 +2,8 @@
 
 Project created for the recruitment process in Future Mind company.
 
+To build the project locally, Android Studio Canary is needed, with JDK set to embed in IDE (requires java 11, see gradle.properties). 
+
 Tech stack:
 - Kotlin
 - Hilt
@@ -12,7 +14,8 @@ Tech stack:
 - Room
 - Retrofit
 
-MVVM/MVI architecture with focus on unidirectional data flow.
+Single activity, MVVM/MVI architecture with focus on unidirectional data flow.
+
 No tests for now. (16.04.2021)
 
 App is multimodule, constructed with the following assumptions:
