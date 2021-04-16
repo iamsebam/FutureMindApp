@@ -18,11 +18,6 @@
     <fragment
         android:id="@+id/detail_fragment"
         android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.detail.DetailFragment"
-        android:label="Detail">
-        
-        <argument
-            android:name="detailUrl"
-            android:defaultValue=""
-            app:argType="string" />
-    </fragment>
+        android:label="Detail" />
+
 </navigation>

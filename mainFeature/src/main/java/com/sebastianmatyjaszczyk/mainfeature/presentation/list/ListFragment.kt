@@ -11,7 +11,6 @@ import com.sebastianmatyjaszczyk.mainfeature.R
 import com.sebastianmatyjaszczyk.mainfeature.databinding.FragmentListBinding
 import com.sebastianmatyjaszczyk.mainfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.mainfeature.domain.ViewEntity
-import com.sebastianmatyjaszczyk.mainfeature.model.ListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -59,7 +58,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     }
 
     private fun setupOnItemSelectedListener() {
-        onItemSelectedListener = viewModel::onItemSelected
+        onItemSelectedListener = viewModel::onListItemSelected
     }
 
     private fun setupListAdapter() {
@@ -71,13 +70,16 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     }
 
     private fun observeDetailViewNavigationAction() {
-        viewModel.detailViewNavigationAction.observe(viewLifecycleOwner, ::handleDetailViewNavigationAction)
+        viewModel.detailViewNavigationAction.observe(viewLifecycleOwner) { handleDetailViewNavigationAction() }
     }
 
-    private fun handleDetailViewNavigationAction(url: String) {
-        val action = ListFragmentDirections.actionListFragmentToDetailFragment(url)
-        findNavController().navigate(action)
+    private fun handleDetailViewNavigationAction() {
+        if (!isMasterDetailView()) {
+            findNavController().navigate(R.id.action_listFragment_to_detailFragment)
+        }
     }
+
+    private fun isMasterDetailView() = binding.detailFragmentContainer != null
 
     private fun setupOnRefreshListener() {
         binding.swipeRefresh.setOnRefreshListener {

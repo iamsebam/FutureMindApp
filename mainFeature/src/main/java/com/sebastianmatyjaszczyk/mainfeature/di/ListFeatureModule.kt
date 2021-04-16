@@ -3,6 +3,7 @@ package com.sebastianmatyjaszczyk.mainfeature.di
 import com.sebastianmatyjaszczyk.commonlib.stringDateFormatter.SourceStringParser
 import com.sebastianmatyjaszczyk.commonlib.stringDateFormatter.StringDateFormatter
 import com.sebastianmatyjaszczyk.commonlib.stringDateFormatter.TargetStringFormatter
+import com.sebastianmatyjaszczyk.mainfeature.repository.DetailUrlRepository
 import com.sebastianmatyjaszczyk.resourceslib.ListFeatureDateFormats
 import dagger.Module
 import dagger.Provides
@@ -38,4 +39,8 @@ object ListFeatureModule {
         sourceStringParser,
         targetStringFormatter
     )
+
+    @Singleton
+    @Provides
+    fun provideDetailUrlRepository(): DetailUrlRepository = DetailUrlRepository()
 }

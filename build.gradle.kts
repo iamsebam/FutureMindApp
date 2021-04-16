@@ -9,7 +9,6 @@ buildscript {
         classpath(Libs.Tools.gradlePlugin)
         classpath(Libs.Tools.ktLint)
         classpath(Libs.Di.hiltGradlePlugin)
-        classpath(Libs.Tools.safeArgs)
     }
 }
 allprojects {

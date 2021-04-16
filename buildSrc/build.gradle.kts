@@ -9,5 +9,4 @@ dependencies {
     implementation("com.android.tools.build:gradle:7.0.0-alpha14")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
     implementation("com.google.dagger:hilt-android-gradle-plugin:2.33-beta")
-    implementation("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5")
 }

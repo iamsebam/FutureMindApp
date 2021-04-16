@@ -5,13 +5,15 @@ import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.viewModels
 import com.sebastianmatyjaszczyk.mainfeature.R
 import com.sebastianmatyjaszczyk.mainfeature.databinding.FragmentDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
-    private val safeArgs: DetailFragmentArgs by navArgs()
+    private val viewModel: DetailViewModel by viewModels()
 
     private var _binding: FragmentDetailBinding? = null
 
@@ -23,7 +25,13 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         applyViewBinding(view)
         setupWebViewClient()
         setupSwipeRefreshListener()
-        loadUrl(safeArgs.detailUrl)
+        observeUrlChanges()
+    }
+
+    private fun observeUrlChanges() {
+        viewModel.detailUrlLiveData.observe(viewLifecycleOwner) { url ->
+            loadUrl(url)
+        }
     }
 
     override fun onDestroyView() {

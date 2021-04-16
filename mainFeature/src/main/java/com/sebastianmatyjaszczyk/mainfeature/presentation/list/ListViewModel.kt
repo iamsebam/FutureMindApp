@@ -1,4 +1,4 @@
-package com.sebastianmatyjaszczyk.mainfeature.model
+package com.sebastianmatyjaszczyk.mainfeature.presentation.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +9,7 @@ import com.sebastianmatyjaszczyk.commonlib.SingleLiveEvent
 import com.sebastianmatyjaszczyk.commonlib.ViewState
 import com.sebastianmatyjaszczyk.mainfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.mainfeature.domain.ViewEntity
+import com.sebastianmatyjaszczyk.mainfeature.repository.DetailUrlRepository
 import com.sebastianmatyjaszczyk.mainfeature.repository.ListRepository
 import com.sebastianmatyjaszczyk.mainfeature.util.ViewEntityMapper
 import com.sebastianmatyjaszczyk.networklib.response.NetworkError
@@ -22,11 +23,12 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 class ListViewModel @Inject constructor(
     private val listRepository: ListRepository,
+    private val detailUrlRepository: DetailUrlRepository,
     private val viewEntityMapper: ViewEntityMapper
 ) : ViewModel() {
 
     private val _viewState: MutableLiveData<ViewState<ViewEntity>> = MutableLiveData()
-    val detailViewNavigationAction: SingleLiveEvent<String> = SingleLiveEvent()
+    val detailViewNavigationAction: SingleLiveEvent<Nothing> = SingleLiveEvent()
 
     val viewState: LiveData<ViewState<ViewEntity>> get() = _viewState
 
@@ -41,8 +43,9 @@ class ListViewModel @Inject constructor(
         }
     }
 
-    fun onItemSelected(item: ListItemViewEntity) {
-        detailViewNavigationAction.value = item.detailUrl
+    fun onListItemSelected(item: ListItemViewEntity) {
+        detailUrlRepository.setCurrentUrl(item.detailUrl)
+        detailViewNavigationAction.call()
     }
 
     private fun observeListItems() {
