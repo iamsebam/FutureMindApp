@@ -74,5 +74,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 displayLoading(false)
             }
         }
+        binding.webView.settings.javaScriptEnabled = true
     }
 }
