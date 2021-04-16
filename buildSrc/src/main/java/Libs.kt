@@ -38,7 +38,6 @@ object Libs {
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Tools.coroutines}"
         const val coil = "io.coil-kt:coil:${Versions.Tools.coil}"
         const val ktLint = "org.jmailen.gradle:kotlinter-gradle:${Versions.Tools.ktLint}"
-        const val safeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.Android.navigation}"
         const val gradleBuildTools = "com.android.tools.build:gradle:${Versions.Tools.gradleBuildTools}"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Tools.kotlinGradlePlugin}"
     }

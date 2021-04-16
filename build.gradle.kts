@@ -11,6 +11,7 @@ buildscript {
         classpath(Libs.Di.hiltGradlePlugin)
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
     }
+    apply(from = "https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/gradle/projectDependencyGraph.gradle")
 }
 allprojects {
     repositories {
