@@ -14,19 +14,20 @@
             android:layout_width="@dimen/image_width_height"
             android:layout_height="@dimen/image_width_height"
             android:layout_margin="@dimen/spacing_sm"
+            android:contentDescription="@string/image_description"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
         
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/modificationDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/spacing_sm"
-            android:gravity="end"
+            android:gravity="start"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintStart_toStartOf="@id/title"
             app:layout_constraintTop_toTopOf="@id/image"
             tools:text="11.04.2021" />
         
@@ -34,24 +35,32 @@
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing_s"
+            android:layout_marginStart="@dimen/spacing_s"
+            android:layout_marginEnd="@dimen/spacing_sm"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@id/modificationDate"
             tools:text="Sample title" />
+        
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="image,title" />
         
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_sm"
-            android:layout_marginHorizontal="@dimen/spacing_sm"
+            android:layout_margin="@dimen/spacing_sm"
+            android:justificationMode="inter_word"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/barrier"
             tools:text="Sample description Sample description Sample description Sample description Sample description Sample description Sample description Sample description" />
     
     </androidx.constraintlayout.widget.ConstraintLayout>

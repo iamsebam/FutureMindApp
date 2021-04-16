@@ -6,6 +6,5 @@
     
     <fragment
         android:id="@+id/detail_fragment"
-        android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.detail.DetailFragment"
-        android:label="Detail" />
+        android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.detail.DetailFragment" />
 </navigation>

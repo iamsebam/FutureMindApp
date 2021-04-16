@@ -10,6 +10,7 @@ import com.sebastianmatyjaszczyk.commonlib.SingleLiveEvent
 import com.sebastianmatyjaszczyk.commonlib.ViewState
 import com.sebastianmatyjaszczyk.mainfeature.domain.ListItemViewEntity
 import com.sebastianmatyjaszczyk.mainfeature.domain.ViewEntity
+import com.sebastianmatyjaszczyk.mainfeature.presentation.misc.ErrorMessagesProvider
 import com.sebastianmatyjaszczyk.mainfeature.repository.DetailUrlRepository
 import com.sebastianmatyjaszczyk.mainfeature.repository.ListRepository
 import com.sebastianmatyjaszczyk.mainfeature.util.ViewEntityMapper
@@ -24,6 +25,7 @@ import javax.inject.Inject
 class ListViewModel @Inject constructor(
     private val listRepository: ListRepository,
     private val detailUrlRepository: DetailUrlRepository,
+    private val errorMessagesProvider: ErrorMessagesProvider,
     private val viewEntityMapper: ViewEntityMapper
 ) : ViewModel() {
 
@@ -79,14 +81,17 @@ class ListViewModel @Inject constructor(
     }
 
     private fun showEmpty() {
-        _viewState.value = ViewState.Error("No data available.")
+        _viewState.value = ViewState.Error(errorMessagesProvider.messageNoData)
     }
 
     private fun showError(error: Throwable) {
-        val errorMessage = when (error) {
-            is NetworkError.NoNetworkError -> "No Internet connection."
-            else -> error.message
-        } ?: "Something went terribly wrong."
+        val errorMessage = mapErrorToErrorMessage(error)
         _viewState.value = ViewState.Error(errorMessage)
     }
+
+    private fun mapErrorToErrorMessage(error: Throwable) =
+        when (error) {
+            is NetworkError.NoNetworkError -> errorMessagesProvider.errorNoInternet
+            else -> error.message
+        } ?: errorMessagesProvider.errorUnknown
 }

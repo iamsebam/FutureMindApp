@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FutureMindApp</string>
+    
+    <string name="image_description">Image</string>
+    
+    <!-- Error strings -->
+    <string name="error_no_internet">No Internet connection.</string>
+    <string name="error_unknown">Something went wrong on our side.</string>
+    <string name="message_no_data">No data available.</string>
 </resources>

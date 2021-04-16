@@ -6,8 +6,7 @@
     
     <fragment
         android:id="@+id/list_fragment"
-        android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.list.ListFragment"
-        android:label="List">
+        android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.list.ListFragment">
         
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
@@ -17,7 +16,6 @@
     
     <fragment
         android:id="@+id/detail_fragment"
-        android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.detail.DetailFragment"
-        android:label="Detail" />
+        android:name="com.sebastianmatyjaszczyk.mainfeature.presentation.detail.DetailFragment" />
 
 </navigation>
