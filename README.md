@@ -18,8 +18,8 @@ No tests for now. (16.04.2021)
 App is multimodule, constructed with the following assumptions:
 - common library modules - networkLib, resourcesLib, commonLib
 - feature library modules, should depend on common modules only
-- feature modules with clean architecture encapsulated, 
+- feature modules with clean architecture encapsulated,
 should depend only on feature library module characteristic for given feature, and common modules
 - app module should depend on feature modules and can depend on common modules
 
-![Dependecy graph](PastedGraphic-2.png)
+![Dependecy graph](Dependency-graph.jpg)
